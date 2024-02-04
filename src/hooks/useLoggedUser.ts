@@ -7,7 +7,7 @@ const useLoggedUser = () =>{
     const [loggedUser, setLoggedUser] = useState<IUser>();
 
     useEffect(()=>{
-        setLoggedUser(selector.authResponse?.data);
+        setLoggedUser(selector.authResponse);
     },[selector])
 
     return loggedUser;
