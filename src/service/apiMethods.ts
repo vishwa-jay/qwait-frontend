@@ -7,6 +7,16 @@ export const GetAuthAPI = (request: ILogin) => {
   return API.post<any>(url, request);
 };
 
+export const LogoutUserAPI =() =>{
+  const url = `/logout`;
+  return API.get<any>(url);
+}
+
+export const GetLoggedUserAPI =(token: string) => {
+  const url = `/loggeduser`;
+  return API.post<any>(url, { token: token });
+}
+
 // export const CreateTaskAPI = (request: ITaskRequest) => {
 //   const url = "/api/v1/task/create";
 //   return API.post<ITaskResponse>(url, request);

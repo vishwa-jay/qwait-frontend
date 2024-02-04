@@ -5,6 +5,8 @@ import { getTokenFromLocalStorage, setTokenToLocalStorage } from "../helpers/man
 import { VENDOR_SEARCH_ROUTE, LOGIN_ROUTE, QUEUE_START_ROUTE } from "../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "./reduxHooks";
+import {useGetHomeRoute} from "./useGetHomeRoute";
+import { getLoggedUser } from "../store/auth/authAction";
 //import { AppState } from "../store/reducers/rootReducer";
 //import { getloggedUser } from "../store/actions/userAction";
 // import { fetchProfile } from "../store/redux/profile/profileActions";
@@ -16,6 +18,7 @@ const useIsAuthenticated = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authResponse , authResponseError, authResponseLoading} = useAppSelector((state) => state.auth);
+  const redirectRoute = useGetHomeRoute();
   // const { profileResponse } = useAppSelector((state) => state.profile);
 
   useEffect(() => {
@@ -32,17 +35,15 @@ const useIsAuthenticated = () => {
       return;
     }
 
-    // token && !authToken && dispatch<any>(setAuthToken(token));
-
     if (!authResponse && token) {
-      //dispatch<any>(getloggedUser(token));
+      dispatch<any>(getLoggedUser(token));
     }
   }, []);
 
   useEffect(()=>{
     if(authResponse && !authResponseError && !authResponseLoading){
       setTokenToLocalStorage("user", authResponse.access_token);
-      navigate(authResponse.role === "2" ? VENDOR_SEARCH_ROUTE : authResponse.role === "1" ? QUEUE_START_ROUTE : LOGIN_ROUTE);
+      navigate(redirectRoute);
       setAuthenticated(true);
       return;
     }else{
