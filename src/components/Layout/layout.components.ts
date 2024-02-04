@@ -15,7 +15,6 @@ export const StyledContentBox = styled(Box)(() => ({
   paddingLeft: 30,
   paddingTop: 30,
   margin: 10,
-  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)"
 }));
 
 

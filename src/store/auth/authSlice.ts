@@ -17,9 +17,11 @@ export const authSlice = createSlice({
     extraReducers : (builder) =>{
         builder.addCase(authenticate.pending, (state) => {
             state.authResponseLoading = true;
+            state.authResponseError = undefined;
           });
           builder.addCase(authenticate.fulfilled, (state, action) => {
             state.authResponse = action.payload;
+            state.authResponseError = undefined;
             state.authResponseLoading = false;
           });
           builder.addCase(authenticate.rejected, (state, action) => {

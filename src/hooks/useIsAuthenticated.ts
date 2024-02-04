@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getTokenFromLocalStorage, setTokenToLocalStorage } from "../helpers/manageAuthToken";
-import { VENDOR_SEARCH_ROUTE, LOGIN_ROUTE } from "../constants/routes";
+import { VENDOR_SEARCH_ROUTE, LOGIN_ROUTE, QUEUE_START_ROUTE } from "../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "./reduxHooks";
 //import { AppState } from "../store/reducers/rootReducer";
@@ -42,7 +42,7 @@ const useIsAuthenticated = () => {
   useEffect(()=>{
     if(authResponse && !authResponseError && !authResponseLoading){
       setTokenToLocalStorage("user", authResponse.access_token);
-      navigate(VENDOR_SEARCH_ROUTE);
+      navigate(authResponse.role === "2" ? VENDOR_SEARCH_ROUTE : authResponse.role === "1" ? QUEUE_START_ROUTE : LOGIN_ROUTE);
       setAuthenticated(true);
       return;
     }else{
