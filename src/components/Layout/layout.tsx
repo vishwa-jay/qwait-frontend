@@ -41,21 +41,13 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       <Grid container sx={{}}>
-        {/* <Box>{isAuth && !loading && <NavBar open={open} />}</Box> */}
         <StyledMainContentDiv
           id="main-content"
           data-testid="main-content"
           open={true}
           noSideNav={true}
-          sx={[
-            open
-              ? { marginLeft: "235px", width: "calc(100% - (235px))" }
-              : isAuth
-              ? { marginLeft: "125px", width: "calc(100% - (125px))" }
-              : { marginLeft: "0px", width: "calc(100%)" },
-          ]}
+          sx={{width: "calc(100%)"}}
         >
-          {/* {isAuth && <Header handleToggle={handleDrawerToggle} />} */}
           <StyledContentBox>{props?.children}</StyledContentBox>
         </StyledMainContentDiv>
       </Grid>

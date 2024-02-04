@@ -3,7 +3,9 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import Login from "../components/Pages/login";
 import { useSelector } from "react-redux";
-import { LOGIN_ROUTE, VENDOR_SEARCH_ROUTE } from "../constants/routes";
+import { LOGIN_ROUTE, QUEUE_START_ROUTE, VENDOR_SEARCH_ROUTE } from "../constants/routes";
+import VendorHome from "../components/Pages/vendor-home";
+import CusHome from "../components/Pages/cus-home";
 
 
 // import ClientListView from "../pages/Client";
@@ -27,7 +29,11 @@ export const APP_ROUTES = [
   },
   {
     path: VENDOR_SEARCH_ROUTE,
-    component: <></>
+    component: <CusHome />
+  },
+  {
+    path:  QUEUE_START_ROUTE,
+    component: <VendorHome />
   }
 
 

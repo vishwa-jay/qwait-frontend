@@ -14,7 +14,7 @@ import { sxMainMessage } from "../Layout/commonSx";
 import { Link } from "react-router-dom";
 import { VENDOR_SEARCH_ROUTE } from "../../constants/routes";
 import { authenticate } from "../../store/auth/authAction";
-import { useAppDispatch } from "../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,7 +30,7 @@ const loginSchema = Yup.object().shape({
 
 const Login = () => {
   const [value, setValue] = useState<ILogin>({ email: "", password: "" });
-  //const user = useSelector((state: AppState) => state.user)
+  const user = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch();
 
   const handleLogin = (value: ILogin) => {
@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <Box sx={{display: "flex", justifyContent: "center", alignContent: "center", height: "calc(100vh - 40px)"}}>
       <Box sx={{ width: "400px", margin: "auto" }}>
-        {/* {!user.response ?  */}
+        {!user.authResponse ?
         <FormContainer formTitle="Please Login Here">
           <Formik
             initialValues={value}
@@ -84,20 +84,20 @@ const Login = () => {
                   />
                 </FieldContainer>
 
-                <Button variant="contained" color="success" type="submit" /*disabled={!props.isValid || user.loading}*/>
+                <Button variant="contained" color="success" type="submit" disabled={!props.isValid || user.authResponseLoading}>
                   Login
                 </Button>
               </Form>
             )}
           </Formik>
-          <FieldContainer label="">{""}
-          {/* {user.errors && user.errors.length > 0 && <AlertBox message={user.errors.toString()} severity="error" showAlert /> } */}
+          <FieldContainer label="">
+          {user.authResponseError && <AlertBox message={user.authResponseError.response.data.error} severity="error" showAlert /> } 
           </FieldContainer>
         
         </FormContainer>
          : 
         <FieldContainer label="" sx={sxMainMessage}>You are already logged! Go to <Link to={VENDOR_SEARCH_ROUTE}>Home</Link></FieldContainer>
-        {/* } */}
+      }
         
       </Box>
     </Box>
