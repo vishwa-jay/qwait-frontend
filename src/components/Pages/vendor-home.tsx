@@ -1,5 +1,10 @@
+import { Grid } from "@mui/material";
+
 const VendorHome = () =>{
-    return <>Vendor home</>;
+    return <>
+    
+    
+    </>;
 }
 
 export default VendorHome;
