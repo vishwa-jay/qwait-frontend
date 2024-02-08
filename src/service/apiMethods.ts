@@ -17,6 +17,26 @@ export const GetLoggedUserAPI =(token: string) => {
   return API.post<any>(url, { token: token });
 }
 
+export const GetVendorCategoryAPI =() =>{
+  const url = `/category/getall`;
+  return API.get<any>(url);
+}
+
+export const SearchVendorAPI =(query: any) =>{
+  const url = `/vendor/search?query=${query.search}&cat=${query.cat}`;
+  return API.get<any>(url);
+}
+
+export const GetNextNum = (branch: number) =>{
+  const url = `/vendor/nextno/${branch}`;
+  return API.get<any>(url);
+}
+
+export const GetCurrentServingNum = (branch: number) =>{
+  const url = `/vendor/activeno/${branch}`;
+  return API.get<any>(url);
+}
+
 // export const CreateTaskAPI = (request: ITaskRequest) => {
 //   const url = "/api/v1/task/create";
 //   return API.post<ITaskResponse>(url, request);
