@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { VENDOR_SEARCH_ROUTE } from "../../constants/routes";
 import { authenticate } from "../../store/auth/authAction";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import './style.css';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -43,62 +44,67 @@ const Login = () => {
   // },[user])
 
   return (
-    <Box sx={{display: "flex", justifyContent: "center", alignContent: "center", height: "calc(100vh - 40px)"}}>
-      <Box sx={{ width: "400px", margin: "auto" }}>
-        {!user.authResponse ?
-        <FormContainer formTitle="Please Login Here">
-          <Formik
-            initialValues={value}
-            validationSchema={loginSchema}
-            onSubmit={handleLogin}
-          >
-            {(props) => (
-              <Form>
-                <FieldContainer label="Email" sx={{marginBottom:3}}>
-                  <TextField
-                    name="email"
-                    size="small"
-                    placeholder={"Email"}
-                    fullWidth
-                    value={props.values.email}
-                    error={props.errors.email === undefined ? false : true}
-                    helperText={props.errors.email}
-                    onChange={(e) => {
-                      props.setFieldValue(e.target.name, e.target.value);
-                    }}
-                  />
-                </FieldContainer>
-                <FieldContainer label="Password">
-                  <TextField
-                    name="password"
-                    type="password"
-                    size="small"
-                    placeholder={"Password"}
-                    fullWidth
-                    value={props.values.password}
-                    error={props.errors.password === undefined ? false : true}
-                    helperText={props.errors.password}
-                    onChange={(e) => {
-                      props.setFieldValue(e.target.name, e.target.value);
-                    }}
-                  />
-                </FieldContainer>
+    <Box className="boxstly" sx={{ display: "flex", marginLeft: "10%", alignContent: "center", height: "calc(80vh - 20px)", width: "80%"}}>
+      <Box sx={{ width: "400px", margin: "auto", borderRadius: "20px" }}>
+          {!user.authResponse ?
+          <FormContainer formTitle="Please Login Here">
+            <Formik
+              initialValues={value}
+              validationSchema={loginSchema}
+              onSubmit={handleLogin}
+            >
+              {(props) => (
+                <Form>
+                  <FieldContainer label="Email" sx={{marginBottom:3}}>
+                    <TextField
+                      name="email"
+                      size="small"
+                      placeholder={"Email"}
+                      fullWidth
+                      value={props.values.email}
+                      error={props.errors.email === undefined ? false : true}
+                      helperText={props.errors.email}
+                      onChange={(e) => {
+                        props.setFieldValue(e.target.name, e.target.value);
+                      }}
+                    />
+                  </FieldContainer>
+                  <FieldContainer label="Password">
+                    <TextField
+                      name="password"
+                      type="password"
+                      size="small"
+                      placeholder={"Password"}
+                      fullWidth
+                      value={props.values.password}
+                      error={props.errors.password === undefined ? false : true}
+                      helperText={props.errors.password}
+                      onChange={(e) => {
+                        props.setFieldValue(e.target.name, e.target.value);
+                      }}
+                    />
+                  </FieldContainer>
 
-                <Button variant="contained" color="success" type="submit" disabled={!props.isValid || user.authResponseLoading}>
-                  Login
-                </Button>
-              </Form>
-            )}
-          </Formik>
-          <FieldContainer label="">
-          {user.authResponseError && <AlertBox message={user.authResponseError.response.data.error} severity="error" showAlert /> } 
-          </FieldContainer>
+                  <Button variant="contained" color="success" type="submit" disabled={!props.isValid || user.authResponseLoading}>
+                    Login
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+            <FieldContainer label="">
+            {user.authResponseError && <AlertBox message={user.authResponseError.response.data.error} severity="error" showAlert /> } 
+            </FieldContainer>
+          
+          </FormContainer>
+          : 
+          <FieldContainer label="" sx={sxMainMessage}>You are already logged! Go to <Link to={VENDOR_SEARCH_ROUTE}>Home</Link></FieldContainer>
+        }
         
-        </FormContainer>
-         : 
-        <FieldContainer label="" sx={sxMainMessage}>You are already logged! Go to <Link to={VENDOR_SEARCH_ROUTE}>Home</Link></FieldContainer>
-      }
-        
+      </Box>
+      <Box className="purple" sx={{ backgroundColor: "#CF9DD7", width: "650px", overflow:"hidden" }}>
+        <div className="image">
+          <img src={require('../../assets/queue1.png')} />
+        </div>
       </Box>
     </Box>
   );
