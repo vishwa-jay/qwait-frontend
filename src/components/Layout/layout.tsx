@@ -47,7 +47,7 @@ export default function Layout(props: LayoutProps) {
           data-testid="main-content"
           open={true}
           noSideNav={true}
-          sx={{width: "calc(100%)"}}
+          sx={{width: "100%"}}
         >
           {isAuth && <Header handleToggle={handleDrawerToggle} />}
           <StyledContentBox>{props?.children}</StyledContentBox>
