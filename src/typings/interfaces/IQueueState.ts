@@ -1,7 +1,19 @@
 export interface IQueueState {
     queueResponse: null | IQueue,
     queueResponseLoading: boolean,
-    queueResponseError: undefined | any
+    queueResponseError: undefined | any,
+
+    reserveQueueResponse: null |  string,
+    reserveQueueLoading: boolean,
+    reserveQueueError:  undefined | any,
+
+    currentReserveResponse: null | number | string,
+    currentReserveLoading: boolean,
+    currentReserveError:  undefined | any
+
+    allCusReserveResponse: null | any,
+    allCusReserveLoading: boolean,
+    allCusReserveError:  undefined | any
 }
 
 export interface IQueue {

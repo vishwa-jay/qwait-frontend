@@ -9,6 +9,7 @@ export interface IVendorBranch {
     branch_name : string,
     description : string,
     image: string,
+    duration: number,
     vendor: IVendor
 }
 

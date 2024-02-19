@@ -37,6 +37,23 @@ export const GetCurrentServingNum = (branch: number) =>{
   return API.get<any>(url);
 }
 
+export const ReserveQueue = (request: any) =>{
+  const url = `/vendor/reserve`;
+  return API.post<any>(url, request);
+}
+
+export const GetUserCurrentReservation = (request: any) =>{
+  const url = `/queue/checkreserve`;
+  return API.post<any>(url, request);
+}
+
+
+export const GetAllReservations = (userId: number) =>{
+  const url = `/queue/allreservations/${userId}`;
+  return API.get<any>(url);
+}
+
+
 // export const CreateTaskAPI = (request: ITaskRequest) => {
 //   const url = "/api/v1/task/create";
 //   return API.post<ITaskResponse>(url, request);
