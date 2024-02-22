@@ -10,12 +10,7 @@ export const StyledMainContentDiv = styled('div', {
 export const StyledContentBox = styled(Box)(() => ({
   flexGrow: 1,
   height: 'calc(100vh - 125px)',
-  overflowY: 'auto',
-  padding: 10,
-  paddingLeft: 30,
-  paddingTop: 30,
-  margin: 10,
-  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)"
+  overflowY: 'auto'
 }));
 
 

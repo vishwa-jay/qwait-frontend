@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import Header from "../Header/header";
 import { useNavigate } from "react-router-dom";
 import useIsAuthenticated from "../../hooks/useIsAuthenticated";
+import Header from "../Header/header";
 // import { getFeatureListByRole } from "../../store/actions/featureAction";
 interface LayoutProps {
   children?: React.ReactNode;
@@ -41,21 +42,14 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       <Grid container sx={{}}>
-        {/* <Box>{isAuth && !loading && <NavBar open={open} />}</Box> */}
         <StyledMainContentDiv
           id="main-content"
           data-testid="main-content"
           open={true}
           noSideNav={true}
-          sx={[
-            open
-              ? { marginLeft: "235px", width: "calc(100% - (235px))" }
-              : isAuth
-              ? { marginLeft: "125px", width: "calc(100% - (125px))" }
-              : { marginLeft: "0px", width: "calc(100%)" },
-          ]}
+          sx={{width: "100%"}}
         >
-          {/* {isAuth && <Header handleToggle={handleDrawerToggle} />} */}
+          {isAuth && <Header handleToggle={handleDrawerToggle} />}
           <StyledContentBox>{props?.children}</StyledContentBox>
         </StyledMainContentDiv>
       </Grid>

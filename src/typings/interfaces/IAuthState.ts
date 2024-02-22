@@ -1,5 +1,5 @@
 export interface IAuthState {
     authResponse: null | any,
     authResponseLoading: boolean,
-    authResponseError: undefined
+    authResponseError: undefined | any
 }

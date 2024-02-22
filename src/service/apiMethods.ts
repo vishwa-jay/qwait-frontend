@@ -7,6 +7,53 @@ export const GetAuthAPI = (request: ILogin) => {
   return API.post<any>(url, request);
 };
 
+export const LogoutUserAPI =() =>{
+  const url = `/logout`;
+  return API.get<any>(url);
+}
+
+export const GetLoggedUserAPI =(token: string) => {
+  const url = `/loggeduser`;
+  return API.post<any>(url, { token: token });
+}
+
+export const GetVendorCategoryAPI =() =>{
+  const url = `/category/getall`;
+  return API.get<any>(url);
+}
+
+export const SearchVendorAPI =(query: any) =>{
+  const url = `/vendor/search?query=${query.search}&cat=${query.cat}`;
+  return API.get<any>(url);
+}
+
+export const GetNextNum = (branch: number) =>{
+  const url = `/vendor/nextno/${branch}`;
+  return API.get<any>(url);
+}
+
+export const GetCurrentServingNum = (branch: number) =>{
+  const url = `/vendor/activeno/${branch}`;
+  return API.get<any>(url);
+}
+
+export const ReserveQueue = (request: any) =>{
+  const url = `/vendor/reserve`;
+  return API.post<any>(url, request);
+}
+
+export const GetUserCurrentReservation = (request: any) =>{
+  const url = `/queue/checkreserve`;
+  return API.post<any>(url, request);
+}
+
+
+export const GetAllReservations = (userId: number) =>{
+  const url = `/queue/allreservations/${userId}`;
+  return API.get<any>(url);
+}
+
+
 // export const CreateTaskAPI = (request: ITaskRequest) => {
 //   const url = "/api/v1/task/create";
 //   return API.post<ITaskResponse>(url, request);
