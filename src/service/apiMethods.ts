@@ -53,6 +53,16 @@ export const GetAllReservations = (userId: number) =>{
   return API.get<any>(url);
 }
 
+export const GetVendorsAllReservationsAPI = (vendorId: number) =>{
+  const url = `/queue/allbranchreservationscount/${vendorId}`;
+  return API.get<any>(url);
+}
+
+
+export const GetQueueByQueueNoAPI = (vendorId: number, qno: number) =>{
+  const url = `queue/getByNo/${vendorId}?q=${qno}`;
+  return API.get<any>(url);
+}
 
 // export const CreateTaskAPI = (request: ITaskRequest) => {
 //   const url = "/api/v1/task/create";
