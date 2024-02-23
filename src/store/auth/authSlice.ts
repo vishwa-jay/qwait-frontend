@@ -54,6 +54,7 @@ export const authSlice = createSlice({
           level: action.payload.level,
           profile: action.payload.profile,
           access_token: action.payload.access_token,
+          branch_id: action.payload.branch_id
       };
 
       state.authResponse = userResponseData;

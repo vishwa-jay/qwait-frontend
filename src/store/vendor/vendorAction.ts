@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { SearchVendorAPI } from "../../service/apiMethods";
+import { GetQueueByQueueNoAPI, GetVendorsAllReservationsAPI, SearchVendorAPI } from "../../service/apiMethods";
 
 export const getVendorBranch = createAsyncThunk(
   "vendor/getVendorBranch",
@@ -12,3 +12,28 @@ export const getVendorBranch = createAsyncThunk(
     }
   }
 );
+
+export const getVendorsAllReservations = createAsyncThunk(
+  "vendor/getVendorsAllReservations",
+  async (vendorId: any, { rejectWithValue, getState }) => {
+    try {
+      const res = await GetVendorsAllReservationsAPI(vendorId);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)
+
+
+export const getQueueByQueueNo = createAsyncThunk(
+  "vendor/getQueueByQueueNo",
+  async (request: any, { rejectWithValue, getState }) => {
+    try {
+      const res = await GetQueueByQueueNoAPI(request.vendorId, request.qno);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)
