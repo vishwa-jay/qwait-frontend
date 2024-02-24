@@ -97,7 +97,7 @@ const CusHome = () => {
 
       <Grid
         container
-        sx={{ maxHeight: "calc(100vh-250px)", overflow: "scroll" }}
+        sx={{ maxHeight: "calc(100vh-250px)", overflow: "scroll", background:"#fff" }}
         justifyContent={"center"}
       >
         {!selectedCat && searchTerm == "" ? (

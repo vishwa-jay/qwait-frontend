@@ -9,7 +9,7 @@ export const StyledMainContentDiv = styled('div', {
 
 export const StyledContentBox = styled(Box)(() => ({
   flexGrow: 1,
-  height: 'calc(100vh - 125px)',
+  height: '100%',
   overflowY: 'auto'
 }));
 

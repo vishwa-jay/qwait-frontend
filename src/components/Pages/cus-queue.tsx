@@ -110,7 +110,7 @@ const CusQueue = () => {
     <>
       <Grid
         container
-        sx={{ padding: "5px", minHeight: 120 }}
+        sx={{ padding: "5px", minHeight: 120, background:"#fff" }}
         display={"flex"}
         justifyContent={"flex-start"}
       >
@@ -155,11 +155,15 @@ const CusQueue = () => {
 
       <Grid
         container
-        sx={{ minHeight: "250px" }}
+        sx={{ minHeight: "250px", background:"#fff" }}
         justifyContent={"center"}
         display={"flex"}
       >
-        <Grid item lg={4} md={6} sm={8} xs={12} display={"flex"}>
+        <Grid item lg={4} md={6} sm={8} xs={12} display={"flex"} 
+        sx={{ background: "rgba(140, 60, 153, 0.5)",
+          borderTopLeftRadius:"20px",
+          borderTopRightRadius:"20px"
+          }}>
           <Grid sm={6} xs={12} sx={{ margin: "auto" }}>
             <Grid item xs={12} className="heroSectionImgContainer">
               <img
@@ -224,11 +228,14 @@ const CusQueue = () => {
       </Grid>
       <Grid
         container
-        sx={{ minHeight: "250px" }}
+        sx={{ minHeight: "250px", background:"#fff", paddingBottom:"10%"}}
         justifyContent={"center"}
         display={"flex"}
       >
-        <Grid item lg={4} md={6} sm={8} xs={12} display={"flex"}>
+        <Grid item lg={4} md={6} sm={8} xs={12} display={"flex"} 
+          sx={{ background: "rgba(140, 60, 153, 0.5)", 
+          borderBottomLeftRadius:"20px",
+          borderBottomRightRadius:"20px"}}>
           <Grid sm={6} xs={12} display={"flex"} sx={{ margin: "auto" }}>
             {queueResponse && (
               <Avatar
@@ -237,6 +244,7 @@ const CusQueue = () => {
                   height: 200,
                   margin: "auto",
                   bgcolor: "#43bc7b",
+                  marginBottom:"10%"
                 }}
               >
                 <Box
@@ -271,7 +279,7 @@ const CusQueue = () => {
               <Grid
                 item
                 xs={12}
-                sx={{ minHeight: "50px", textAlign: "center" }}
+                sx={{ minHeight: "50px", textAlign: "center", marginRight:"5%" }}
               >
                 <Alert
                   icon={<PersonPinIcon sx={{ fontSize: 42 }} />}
